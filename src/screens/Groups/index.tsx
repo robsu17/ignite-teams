@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { Header } from '@components/Header';
 import { Highlight } from '@components/Highlight';
 import { GroupCard } from '@components/GroupCard';
+import { ListEmpty } from '@components/ListEmpty';
+import { Button } from '@components/Button'
 
 import { Container } from './styles';
 import { FlatList } from 'react-native';
@@ -13,16 +15,7 @@ type Group = {
 }
 
 export function Groups() {
-  const [groups, setGroups] = useState<Group[]>([
-    {
-      id: 1,
-      title: 'Amigos da mirage'
-    },
-    {
-      id: 2,
-      title: 'Os fura bola'
-    }
-  ])
+  const [groups, setGroups] = useState<Group[]>([])
 
   return (
     <Container>
@@ -41,6 +34,16 @@ export function Groups() {
             title={item.title} 
           />
         )}
+        contentContainerStyle={groups.length === 0 && { flex: 1 }}
+        ListEmptyComponent={() => (
+          <ListEmpty 
+            message='Cadastre uma nova turma'
+          />
+        )}
+      />
+
+      <Button 
+        title='Criar nova turma'
       />
     </Container>
   );
