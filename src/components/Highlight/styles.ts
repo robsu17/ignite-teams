@@ -1,3 +1,4 @@
+import { css } from "styled-components";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
@@ -8,15 +9,19 @@ export const Container = styled.View`
 export const Title = styled.Text`
   text-align: center;
   
-  font-size: ${({ theme }) => theme.font_size.xl}px;
-  font-family: ${({ theme }) => theme.font_family.bold};
-  color: ${({ theme }) => theme.colors.white};
+  ${({ theme }) => css`
+    font-size: ${theme.font_size.xl}px;
+    font-family: ${theme.font_family.bold};
+    color: ${theme.colors.white};
+  `}
 `
 
 export const SubTitle = styled.Text`
   text-align: center;
   
-  font-size: ${({ theme }) => theme.font_size.md}px;
-  font-family: ${({ theme }) => theme.font_family.regular};
-  color: ${({ theme }) => theme.colors.gray_300};
+  ${({ theme }) => css`
+    font-size: ${theme.font_size.md}px;
+    font-family: ${theme.font_family.regular};
+    color: ${theme.colors.gray_300};
+  `}
 `
