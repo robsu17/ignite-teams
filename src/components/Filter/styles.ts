@@ -14,8 +14,6 @@ export const Container = styled(TouchableOpacity)<FilterStyleProps>`
   border-radius: 4px;
   margin-right: 12px;
 
-  margin-top: 8px;
-
   height: 38px;
   width: 70px;
   align-items: center;
@@ -26,7 +24,7 @@ export const Title = styled.Text`
   text-transform: uppercase;
   ${({ theme }) => css`
     font-family: ${theme.font_family.bold};
-    font-size: ${theme.font_size.sm};
+    font-size: ${theme.font_size.sm}px;
     color: ${theme.colors.white};
   `}
 `

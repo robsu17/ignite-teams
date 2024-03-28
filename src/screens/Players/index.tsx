@@ -1,11 +1,28 @@
 import { Header } from "@components/Header";
-import { Container, Form } from "./styles";
+import { Container, Form, HeaderList, NumbersOfPlayers } from "./styles";
 import { Highlight } from "@components/Highlight";
 import { ButtonIcon } from "@components/ButtonIcon";
 import { Input } from "@components/Input";
 import { Filter } from "@components/Filter";
+import { FlatList } from "react-native";
+import { useState } from "react";
+import { PlayerCard } from "@components/PlayerCard";
+
+const teams = [
+  {
+    id: 1,
+    name: 'Time A'
+  },
+  {
+    id: 2,
+    name: 'Time B'
+  }
+]
 
 export function Players() {
+  const [team, setTeam] = useState('Time A')
+  const [players, setPlayers] = useState(['Neymar', 'Casemiro', 'Messi', 'Cristiano Ronaldo'])
+
   return (
     <Container>
       <Header 
@@ -28,10 +45,36 @@ export function Players() {
         />
       </Form>
 
-      <Filter 
-        title="Time A"
-        isActive
+      <HeaderList>
+        <FlatList 
+          data={teams}
+          keyExtractor={(item) => item.name}
+          renderItem={({ item }) => (
+            <Filter 
+              title={item.name}
+              isActive={item.name === team}
+              onPress={() => setTeam(item.name)}
+            />
+          )}
+          horizontal
+        />
+
+        <NumbersOfPlayers>
+          {players.length}
+        </NumbersOfPlayers>
+      </HeaderList>
+
+      <FlatList 
+        data={players}
+        keyExtractor={(item) => item}
+        renderItem={({ item }) => (
+          <PlayerCard 
+            name={item}
+            onRemove={() => {}}
+          />
+        )}
       />
+    
     </Container>
   )
 }
