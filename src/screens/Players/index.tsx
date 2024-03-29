@@ -9,6 +9,7 @@ import { useState } from "react";
 import { PlayerCard } from "@components/PlayerCard";
 import { ListEmpty } from "@components/ListEmpty";
 import { Button } from "@components/Button";
+import { useRoute } from "@react-navigation/native";
 
 const teams = [
   {
@@ -21,9 +22,16 @@ const teams = [
   }
 ]
 
+type RouteParams = {
+  group: string
+}
+
 export function Players() {
   const [team, setTeam] = useState('Time A')
   const [players, setPlayers] = useState(['Neymar', 'Casemiro', 'Messi', 'Cristiano Ronaldo', 'Drogba', 'Roberto Firmino', 'Rodrygo', 'Vini jr', 'Endrick'])
+
+  const route = useRoute()
+  const { group } = route.params as RouteParams
 
   return (
     <Container>
@@ -32,7 +40,7 @@ export function Players() {
       />
 
       <Highlight 
-        title="Nome da turma"
+        title={group}
         subtitle="Adicione a galera e separe os times"
       />
 
