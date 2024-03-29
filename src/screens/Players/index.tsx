@@ -7,6 +7,8 @@ import { Filter } from "@components/Filter";
 import { FlatList } from "react-native";
 import { useState } from "react";
 import { PlayerCard } from "@components/PlayerCard";
+import { ListEmpty } from "@components/ListEmpty";
+import { Button } from "@components/Button";
 
 const teams = [
   {
@@ -21,7 +23,7 @@ const teams = [
 
 export function Players() {
   const [team, setTeam] = useState('Time A')
-  const [players, setPlayers] = useState(['Neymar', 'Casemiro', 'Messi', 'Cristiano Ronaldo'])
+  const [players, setPlayers] = useState(['Neymar', 'Casemiro', 'Messi', 'Cristiano Ronaldo', 'Drogba', 'Roberto Firmino', 'Rodrygo', 'Vini jr', 'Endrick'])
 
   return (
     <Container>
@@ -73,8 +75,22 @@ export function Players() {
             onRemove={() => {}}
           />
         )}
+        ListEmptyComponent={() => (
+          <ListEmpty 
+            message="Não há pessoas nesse time"
+          />
+        )}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[
+          { paddingBottom: 50 },
+          players.length == 0 && { flex: 1 }
+        ]}
       />
-    
+
+      <Button 
+        title="Remover turma"
+        type="secondary"
+      />
     </Container>
   )
 }
