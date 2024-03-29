@@ -9,6 +9,8 @@ import { Loading } from "@components/Loading";
 import { NewGroup } from '@screens/NewGroup';
 import { Players } from '@screens/Players';
 
+import { Routes } from './src/routes'
+
 export default function App() {
   const [ fontsLoaded ] = useFonts ({
     Roboto_400Regular,
@@ -22,7 +24,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <Groups /> : <Loading />}
+      {fontsLoaded ? <Routes /> : <Loading />}
     </ThemeProvider>
   );
 }
