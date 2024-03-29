@@ -1,10 +1,9 @@
 import styled from "styled-components/native";
 import { CaretLeft } from 'phosphor-react-native'
+import { TouchableOpacityProps } from "react-native";
 
 export const Container = styled.View`
   width: 100%;
-
-  margin-top: 40px;
   flex-direction: row;
   align-items: center;
   justify-content: center;

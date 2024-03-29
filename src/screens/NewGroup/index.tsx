@@ -3,8 +3,15 @@ import { Container, Content, Icon } from "./styles";
 import { Highlight } from "@components/Highlight";
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
+import { useNavigation } from "@react-navigation/native";
 
 export function NewGroup() {
+  const navigation = useNavigation()
+
+  function handleCreateGroup() {  
+    navigation.navigate('players', { group: 'Grupin do zap' })
+  }
+
   return (
     <Container>
       <Header showBackButton/>
@@ -22,6 +29,7 @@ export function NewGroup() {
         />
 
         <Button 
+          onPress={handleCreateGroup}
           title="Criar"
         />
       </Content>
